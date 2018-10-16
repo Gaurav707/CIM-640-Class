@@ -1,6 +1,22 @@
 var sun;
 var moon;
 
+var r = 255;
+var g = 255;
+var b = 255;
+
+var cX = 100;
+var cY = 250;
+var cEdge = 20;
+
+var rectX = 50;
+var rectY = 50;
+var rectSize = 100;
+
+varsunShow = false;
+
+var sunButton;
+
 function preload(){
     sun = loadImage('assets/sun.png');
     moon= loadImage('assets/moon.png');
@@ -9,42 +25,73 @@ function setup() {
   // put setup code here
 
 createCanvas(400,400);
+sunButton = createButton("Press to show/hide sun");
+sunButton.position(500,100);
+sunButton.mousePressed(function(){
+  if(sunShow == false){
+    sunShow = true;
+  }else{
+  sunShow = false;
+
+    }
+
+
+});
 }
 function draw() {
-  // put drawing code here
   background(255);
-console.log("mouseX: "+ mouseX + "mouseY: "+ mouseY);
+  fill(r,g,b);
+  rect(rectX,rectY,rectSize,rectSize);
+  imageMode(center);
+image(sun,cX,cY,sun.width/4,sun.height/4);
+
+if(sunShow == true){
 
 
-
-  //Interface
-  textSize(18);
-  text("Move over each area to reveal a surprise!", 20,20);
-
-
-line(width/2, 0, width/2, height)
-text("Day", 120,360);
-text("Night", 300,360);
-
-//Interaction
-
-/*
-if(true){
-Execute this code
+image(sun, 300,200);
 }
-*/
 
-if(mouseX < width/2){
-  console.log("Day Side");
-  image(sun,100,100);
 
+}
+
+function mousePressed(){
+if(mouseX > rectX && mouseX < rectX + rectSize && mouseY > rectY && mouseY < rectY + rectSize){
+  r = random(0,256);
+  g = random(0,256);
+  b = random(0,256);
+
+}
+var sunDist = dist(mouseX,mouseY,cX,cY);
+console.log("sun Dist: " + sunDist);
+if(sunDist < 40){
+  //show/hide sun image
+if(sunShow == false){
+  sunShow = true;
+}else{
+sunShow = false;
   }
+  console.console.log();
 
-  if(mouseX >= width/2){
-    console.log("Night Side");
-    image(moon,100,100);
 
-  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
