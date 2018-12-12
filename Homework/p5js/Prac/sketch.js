@@ -55,6 +55,7 @@ background(220);
 color1 = color(10);
 color2 = color(50);
 
+
 if(colorChange==true)
 {
   color1 = color(255,0,15);
@@ -118,7 +119,9 @@ function setGradient(x, y, w, h, c1, c2, axis) {
     image(alien, mouseX, mouseY)
   }
 
-
+  fill(255)
+  textSize(36);
+  text('Night Sky',500,40);
 
 }
 
